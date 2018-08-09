@@ -94,8 +94,17 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('should have atleast one entry when loadFeed if called and completed', function() {
-            
+        let fd;
+        beforeEach(function(done) {
+            fd = $('feed');
+            init();
+            done();
+        });
+
+        it('should have at least one entry when loadFeed() is called and completed', function(done) {
+            expect(fd).not.toBeNull();
+            console.log(fd);
+            done();
         });
     });
 
