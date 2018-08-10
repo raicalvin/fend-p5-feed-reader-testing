@@ -103,7 +103,7 @@ $(function() {
 
         it('should have at least one entry when loadFeed() is called and completed', function(done) {
             expect(fd).not.toBeNull();
-            console.log(fd);
+            // console.log(fd);
             done();
         });
     });
@@ -114,13 +114,33 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let item1, item2;
+
+        // Load the second feed and get the first element title
         beforeEach(function(done) {
+            loadFeed(1, function() {
+                item1 = $('a.entry-link:first')[0].innerText;
+                done();
+            });
+        });
+        // Load the first feed and get the first element title
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                item2 = $('a.entry-link:first')[0].innerText;
+                done();
+            });
+        });
+
+        // Compare that the title of the first element from the first feed does not match the title of the first element of the second feed
+        it('ensures content change when new feed loaded', function(done) {
+            console.log(item1, item2)
+            expect(item1).not.toBe(item2);
             done();
         });
 
-        it('ensures the content is changed when a new feed is loaded', function(done) {
-            done();
-        });
+
+
     });
+
         
 }());
