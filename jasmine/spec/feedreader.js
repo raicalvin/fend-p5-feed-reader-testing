@@ -131,6 +131,8 @@ $(function() {
             });
         });
 
+        // NOTE TO SELF: Remember, the spec below will NOT run until the done() functions from any and all beforeEach() functions is run. Make sure the item1 and item2 are getting the right titles in the above two beforeEach() functions before the spec starts testing
+
         // Compare that the title of the first element from the first feed does not match the title of the first element of the second feed
         it('ensures content change when new feed loaded', function(done) {
             console.log(item1, item2)
@@ -138,9 +140,7 @@ $(function() {
             done();
         });
 
-
-
+        // NOTE TO SELF: Since your beforeEach() functions above are using done(), the spec itself must be using done() as well since it will not finish until the done() function is run (and since you're passing in 'done' into the callback function parameter)
     });
-
-        
+ 
 }());
