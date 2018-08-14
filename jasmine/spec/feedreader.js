@@ -79,10 +79,12 @@ $(function() {
         it('should change visibility when clicked.', function() {
             bd.toggleClass(); // First click to open menu
             // Expect menu to be displayed when clicked on
-            expect(bd.attr('class')).toBe('');
+            // expect(bd.attr('class')).toBe('');
+            expect(bd.hasClass("menu-hidden")).toBe(false);
             bd.toggleClass(); // Second click to hide menu
             // Expect menu to be hidden when clicked on
-            expect(bd.attr('class')).toBe('menu-hidden');
+            // expect(bd.attr('class')).toBe('menu-hidden');
+            expect(bd.hasClass("menu-hidden")).toBe(true);
         });
     });
 
@@ -125,6 +127,7 @@ $(function() {
         let item1, item2;
 
         // Load the second feed and get the first element title
+        /*
         beforeEach(function(done) {
             loadFeed(1, function() {
                 item1 = $('a.entry-link:first')[0].innerText;
@@ -137,13 +140,25 @@ $(function() {
                 item2 = $('a.entry-link:first')[0].innerText;
                 done();
             });
+        });*/
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                item1 = $('a.entry-link:first')[0].innerText;
+                console.log(item1);
+                loadFeed(1, function() {
+                    item2 = $('a.entry-link:first')[0].innerText;
+                    console.log(item2)
+                    done();
+                });
+            });
         });
 
         // NOTE TO SELF: Remember, the spec below will NOT run until the done() functions from any and all beforeEach() functions is run. Make sure the item1 and item2 are getting the right titles in the above two beforeEach() functions before the spec starts testing
 
         // Compare that the title of the first element from the first feed does not match the title of the first element of the second feed
         it('ensures content change when new feed loaded', function(done) {
-            console.log(item1, item2)
+            //console.log(item1, item2)
             expect(item1).not.toBe(item2);
             done();
         });
