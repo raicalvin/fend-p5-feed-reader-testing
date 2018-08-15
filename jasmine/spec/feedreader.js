@@ -109,6 +109,9 @@ $(function() {
 
         it('should have at least one entry when loadFeed() is called and completed', function(done) {
             numOfFeedItems = document.getElementsByClassName("entry-link");
+            expect($('.feed .entry')).toBeDefined();
+            expect($('.feed .entry')).not.toBeUndefined();
+            expect($('.feed .entry')).not.toBeNull();
             expect(numOfFeedItems.length).toBeGreaterThan(0);
             // expect(fd).not.toBeNull();
             // console.log(fd);
@@ -125,22 +128,6 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         let item1, item2;
-
-        // Load the second feed and get the first element title
-        /*
-        beforeEach(function(done) {
-            loadFeed(1, function() {
-                item1 = $('a.entry-link:first')[0].innerText;
-                done();
-            });
-        });
-        // Load the first feed and get the first element title
-        beforeEach(function(done) {
-            loadFeed(0, function() {
-                item2 = $('a.entry-link:first')[0].innerText;
-                done();
-            });
-        });*/
 
         beforeEach(function(done) {
             loadFeed(0, function() {
