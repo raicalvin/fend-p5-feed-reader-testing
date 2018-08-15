@@ -69,6 +69,7 @@ $(function() {
         it ('is hidden by default', function() {
             //bd.toggleClass('menu-hidden');
             expect(jasmine.createSpy(bd, 'toggleClass')).not.toHaveBeenCalledWith('menu-hidden');
+            expect(bd.hasClass("menu-hidden")).toBe(true);
         });
 
         /* TODO: Write a test that ensures the menu changes
