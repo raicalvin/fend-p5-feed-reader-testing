@@ -98,7 +98,6 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        let fd = $('feed');
         let numOfFeedItems;
 
         beforeEach(function(done) {
