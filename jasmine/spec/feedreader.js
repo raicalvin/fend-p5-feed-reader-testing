@@ -78,11 +78,11 @@ $(function() {
          * clicked and does it hide when clicked again.
          */ 
         it('should change visibility when clicked.', function() {
-            bd.toggleClass(); // First click to open menu
+            $(".menu-icon-link").click(); // First click to open menu
             // Expect menu to be displayed when clicked on
             // expect(bd.attr('class')).toBe('');
             expect(bd.hasClass("menu-hidden")).toBe(false);
-            bd.toggleClass(); // Second click to hide menu
+            $(".menu-icon-link").click(); // Second click to hide menu
             // Expect menu to be hidden when clicked on
             // expect(bd.attr('class')).toBe('menu-hidden');
             expect(bd.hasClass("menu-hidden")).toBe(true);
